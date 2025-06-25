@@ -85,7 +85,7 @@ if menu == "Klasifikasi Pisang":
         with st.spinner("🔍 Memprediksi..."):
             label, prob = predict_image(image)
 
-        if label == "unknown" or prob < 0.80:
+        if label == "unknown" or prob < 0.70:
             st.warning("⚠️ Gambar tidak dikenali sebagai pisang atau akurasi rendah. Silakan unggah gambar pisang yang lebih jelas.")
         else:
             st.success(f"✅ Hasil: {label.capitalize()} ({prob:.2%})")
