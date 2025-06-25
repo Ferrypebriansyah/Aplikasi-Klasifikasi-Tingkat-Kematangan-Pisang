@@ -72,10 +72,13 @@ with st.sidebar:
 if menu == "Klasifikasi Pisang":
     st.title("📷 Unggah Gambar Pisang")
     
-    st.info(
-        "📝**Tips**: "
-        "Pastikan gambar pisang yang diunggah jelas dan memiliki pencahayaan yang baik agar hasil klasifikasi lebih akurat. Jika gambar tidak sesuai, kemungkinan masalahnya yaitu kualitas gambar kurang bagus."
-    )
+    st.info("""
+    📝 **Tips:**
+    - Pastikan gambar pisang yang diunggah **jelas** dan memiliki **pencahayaan yang baik**.
+    - Gunakan **gambar dari sudut yang tepat** agar bentuk dan warna terlihat.
+    - Jika hasil tidak sesuai, kemungkinan disebabkan oleh **kualitas gambar yang kurang bagus**.
+    """)
+
     
     uploaded_file = st.file_uploader("Unggah gambar", type=["jpg", "jpeg", "png"])
     
