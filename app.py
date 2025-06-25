@@ -38,13 +38,13 @@ detailed_benefits = {
 
 # ===== MUAT MODEL (.h5) =====
 try:
-    model = tf.keras.models.load_model("model_custom.h5")
+    model = tf.keras.models.load_model("model_mobilenetv2_2.h5")
 except Exception as e:
     st.error(f"❌ Gagal memuat model: {e}")
     st.stop()
 
 # ===== LABEL MANUAL SESUAI URUTAN TRAINING =====
-labels = ['cokelat', 'hijau', 'kuning', 'kuning bintik cokelat']
+labels = ['cokelat', 'hijau', 'kuning', 'kuning bintik cokelat', 'unknown']
 
 # ===== FUNGSI PROSES GAMBAR =====
 def crop_image(image):
@@ -64,7 +64,7 @@ def predict_image(image):
 
 # ===== SIDEBAR =====
 with st.sidebar:
-    st.image("pisang.png", use_container_width=True)
+    st.image("pisang.png", use_column_width=True)
     st.header("🍌 Klasifikasi Tingkat Kematangan Pisang 🍌")
     menu = st.radio("Pilih Menu", ["Detail Manfaat Pisang", "Klasifikasi Pisang"])
 
@@ -72,7 +72,6 @@ with st.sidebar:
 if menu == "Klasifikasi Pisang":
     st.title("📷 Unggah Gambar Pisang")
     
-    # Tambahkan pengingat dengan ikon info
     st.markdown(
         "📝 **Tips:** Pastikan gambar pisang yang diunggah jelas dan memiliki pencahayaan yang baik agar hasil klasifikasi lebih akurat."
     )
@@ -81,14 +80,17 @@ if menu == "Klasifikasi Pisang":
     
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
-        st.image(image, caption="Gambar yang diunggah", use_container_width=True)
+        st.image(image, caption="Gambar yang diunggah", use_column_width=True)
         st.write("---")
         with st.spinner("🔍 Memprediksi..."):
             label, prob = predict_image(image)
-        st.success(f"✅ Hasil: {label.capitalize()} ({prob:.2%})")
-        st.info(f"💡 Insight: {insights.get(label, '-')}")
-        st.markdown("ℹ️ Lihat penjelasan lengkap di menu **Detail Manfaat Pisang**.")
-
+        
+        if label == "unknown":
+            st.warning("⚠️ Gambar yang diunggah tidak dikenali sebagai pisang. Silakan unggah gambar pisang yang jelas.")
+        else:
+            st.success(f"✅ Hasil: {label.capitalize()} ({prob:.2%})")
+            st.info(f"💡 Insight: {insights.get(label, '-')}")
+            st.markdown("ℹ️ Lihat penjelasan lengkap di menu **Detail Manfaat Pisang**.")
 
 # ===== HALAMAN DETAIL MANFAAT =====
 elif menu == "Detail Manfaat Pisang":
