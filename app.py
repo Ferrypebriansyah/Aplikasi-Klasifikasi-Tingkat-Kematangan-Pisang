@@ -5,10 +5,10 @@ import numpy as np
 
 # ===== DICTIONARY PENJELASAN MANFAAT (Tetap) =====
 insights = {
-    "hijau": "Baik untuk mengontrol gula darah karena tinggi pati resisten dan menjaga kesehatan pencernaan.",
-    "kuning": "Sumber energi yang ideal, kaya potasium untuk kesehatan jantung dan serat untuk pencernaan.",
-    "kuning bintik cokelat": "Sangat mudah dicerna, kaya antioksidan, dan memiliki kandungan yang baik untuk imunitas.",
-    "cokelat": "Kandungan gula dan antioksidan sangat tinggi, sempurna untuk pemanis alami pada makanan."
+    "hijau": "Pisang dengan tingkat kematangan **Hijau** baik untuk mengontrol gula darah karena tinggi pati resisten dan menjaga kesehatan pencernaan.",
+    "kuning": "Pisang dengan tingkat kematangan **Kuning** bermanfaat sebagai sumber energi yang ideal, kaya potasium untuk kesehatan jantung dan serat untuk pencernaan.",
+    "kuning bintik cokelat": "Pisang dengan tingkat kematangan **Kuning bintik cokelat** sangat mudah dicerna, kaya antioksidan, dan memiliki kandungan yang baik untuk imunitas.",
+    "cokelat": "Pisang dengan tingkat kematangan **cokelat** memiliki kandungan gula dan antioksidan sangat tinggi, sempurna untuk pemanis alami pada makanan."
 }
 
 detailed_benefits = {
@@ -72,7 +72,7 @@ with st.sidebar:
 if menu == "Klasifikasi Pisang":
     st.title("📷 Unggah Gambar Pisang")
     
-    st.markdown(
+    st.info(
         "📝 **Tips:** Pastikan gambar pisang yang diunggah jelas dan memiliki pencahayaan yang baik agar hasil klasifikasi lebih akurat."
     )
     
