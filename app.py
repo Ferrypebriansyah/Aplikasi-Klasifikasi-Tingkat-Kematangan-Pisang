@@ -73,7 +73,7 @@ if menu == "Klasifikasi Pisang":
     st.title("📷 Unggah Gambar Pisang")
     
     st.info(
-        "📝 **Tips: **"
+        "📝**Tips**: "
         "Pastikan gambar pisang yang diunggah jelas dan memiliki pencahayaan yang baik agar hasil klasifikasi lebih akurat. Jika gambar tidak sesuai, kemungkinan masalahnya yaitu kualitas gambar kurang bagus."
     )
     
