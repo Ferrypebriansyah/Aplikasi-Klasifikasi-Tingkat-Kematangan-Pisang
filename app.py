@@ -69,7 +69,7 @@ with st.sidebar:
     menu = st.radio("Pilih Menu", ["Detail Manfaat Pisang", "Klasifikasi Pisang"])
 
 # ===== HALAMAN KLASIFIKASI =====
-if menu == "Klasifikasi Pisang":
+if menu == "Klasifikasi Pi":
     st.title("📷 Unggah Gambar Pisang")
     
     st.markdown(
