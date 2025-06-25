@@ -71,22 +71,22 @@ with st.sidebar:
 # ===== HALAMAN KLASIFIKASI =====
 if menu == "Klasifikasi Pisang":
     st.title("📷 Unggah Gambar Pisang")
-
+    
     st.markdown(
         "📝 **Tips:** Pastikan gambar pisang yang diunggah jelas dan memiliki pencahayaan yang baik agar hasil klasifikasi lebih akurat."
     )
-
+    
     uploaded_file = st.file_uploader("Unggah gambar", type=["jpg", "jpeg", "png"])
-
+    
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
         st.image(image, caption="Gambar yang diunggah", use_container_width=True)
         st.write("---")
         with st.spinner("🔍 Memprediksi..."):
             label, prob = predict_image(image)
-
-        if label == "unknown" or prob < 0.70:
-            st.warning("⚠️ Gambar tidak dikenali sebagai pisang atau akurasi rendah. Silakan unggah gambar pisang yang lebih jelas.")
+        
+        if label == "unknown":
+            st.warning("⚠️ Gambar yang diunggah tidak dikenali sebagai pisang. Silakan unggah gambar pisang yang jelas.")
         else:
             st.success(f"✅ Hasil: {label.capitalize()} ({prob:.2%})")
             st.info(f"💡 Insight: {insights.get(label, '-')}")
