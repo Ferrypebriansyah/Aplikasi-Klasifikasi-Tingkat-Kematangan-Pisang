@@ -69,8 +69,8 @@ with st.sidebar:
     menu = st.radio("Pilih Menu", ["Detail Manfaat Pisang", "Klasifikasi Pisang"])
 
 # ===== HALAMAN KLASIFIKASI =====
-if menu == "Klasifikasi Pi":
-    st.title("📷 Unggah Gambar Pisang")
+if menu == "Klasifikasi Pisang":
+    st.title("📷 Unggah Gambar buah")
     
     st.markdown(
         "📝 **Tips:** Pastikan gambar pisang yang diunggah jelas dan memiliki pencahayaan yang baik agar hasil klasifikasi lebih akurat."
