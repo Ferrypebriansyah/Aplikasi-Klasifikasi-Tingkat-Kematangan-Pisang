@@ -56,7 +56,7 @@ def crop_image(image):
 def predict_image(image):
     image = image.convert("RGB")
 
-    # Crop dan resize gambar
+    # Crop dan resize
     cropped_image = crop_image(image)
     img = cropped_image.resize((150, 150))
 
