@@ -54,13 +54,21 @@ def crop_image(image):
     return image.crop((crop_x, crop_y, crop_x + crop_size, crop_y + crop_size))
 
 def predict_image(image):
+    image = image.convert("RGB")
+
+    # Crop dan resize gambar
     cropped_image = crop_image(image)
     img = cropped_image.resize((150, 150))
+
+    # Normalisasi dan ubah jadi batch
     img_array = np.array(img) / 255.0
-    img_array = np.expand_dims(img_array, axis=0)
+    img_array = np.expand_dims(img_array, axis=0)  # (1, 150, 150, 3)
+
+    # Prediksi
     prediction = model.predict(img_array)
     max_index = np.argmax(prediction)
     return labels[max_index], prediction[0][max_index]
+
 
 # ===== SIDEBAR =====
 with st.sidebar:
