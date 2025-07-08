@@ -94,7 +94,7 @@ if menu == "Klasifikasi Pisang":
         image = Image.open(uploaded_file)
         st.image(image, caption="Gambar yang diunggah", use_container_width=True)
         st.write("---")
-        with st.spinner("📊 Mengklasifikasikan gambar..."):
+        with st.spinner("📊 Mengklasifikasikan..."):
             label, prob = classify_image(image)
 
         if label == "unknown":
