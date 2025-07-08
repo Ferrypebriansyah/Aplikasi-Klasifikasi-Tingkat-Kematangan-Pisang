@@ -53,7 +53,7 @@ def crop_image(image):
     crop_y = (image.height - crop_size) / 2
     return image.crop((crop_x, crop_y, crop_x + crop_size, crop_y + crop_size))
 
-def predict_image(image):
+def classify_image(image):
     image = image.convert("RGB")
 
     # Crop dan resize
@@ -64,7 +64,7 @@ def predict_image(image):
     img_array = np.array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)  # (1, 150, 150, 3)
 
-    # Prediksi
+    # Klasifikasi
     prediction = model.predict(img_array)
     max_index = np.argmax(prediction)
     return labels[max_index], prediction[0][max_index]
@@ -94,9 +94,9 @@ if menu == "Klasifikasi Pisang":
         image = Image.open(uploaded_file)
         st.image(image, caption="Gambar yang diunggah", use_container_width=True)
         st.write("---")
-        with st.spinner("🔍 Memprediksi..."):
-            label, prob = predict_image(image)
-        
+        with st.spinner("📊 Mengklasifikasikan gambar..."):
+            label, prob = classify_image(image)
+
         if label == "unknown":
             st.warning("⚠️ Gambar yang diunggah tidak dikenali sebagai pisang. Silakan unggah gambar pisang yang jelas.")
         else:
